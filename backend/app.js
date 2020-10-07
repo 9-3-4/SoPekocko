@@ -13,7 +13,7 @@ const userRoutes = require('./routes/user');
 const app = express();
 
 //connection API à la base de donnée MongoDB
-mongoose.connect('mongodb+srv://user_1:Sopeko1@cluster0.pp0he.mongodb.net/<dbname>?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://user_1:Sopeko1@cluster0.pp0he.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
