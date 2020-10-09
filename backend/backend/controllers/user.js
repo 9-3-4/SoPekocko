@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');//hashage-cryptage des mots de passe
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const User = require("C:\\Users\\Utilisateur\\Documents\\SoPekocko\\backend\\models\\user.js");
 
 //enregistrement utilisateurs
 exports.signup = (req, res, next) => {

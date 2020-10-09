@@ -3,6 +3,23 @@ const Sauce = require('../models/sauce');
 // Ajout du package File System pour acceder aux fonction qui permet la suppression des sauces
 const fs = require ('fs');
 
+// // Creation voir une Sauce (GET)
+
+exports.getAllSauces = (req, res, next) => {
+  Sauce.find()
+    .then((sauces) => res.status(200).json(sauces))
+    .catch((error) => res.status(400).json({ error }));
+};
+
+// Creation voir une Sauce (GET)
+
+exports.getOneSauce = (req, res, next) => {
+  Sauce.findOne({ _id: req.params.id })
+    .then((sauce) => res.status(200).json(sauce))
+    .catch((error) => res.status(404).json({ error }));
+};
+
+
 //creation sauce POST
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce); 
@@ -16,13 +33,6 @@ exports.createSauce = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
    };
 
- 
-//recuperation d une sauce GET
-exports.getOneSauce = (req, res, next) => {
-  Sauce.findOne({ _id: req.params.id }) // récupération d'une sauce unique
-    .then(sauces => res.status(200).json(sauces))
-    .catch(error => res.status(400).json({ error }));
-};
   
   //modification sauce PUT
   exports.modifySauce = (req, res, next) =>  {
