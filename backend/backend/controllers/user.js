@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');//hashage-cryptage des mots de passe
 const jwt = require('jsonwebtoken');
-const User = require("C:\\Users\\Utilisateur\\Documents\\SoPekocko\\backend\\models\\user.js");
+const User = require("../models/user");
 
 //enregistrement utilisateurs
 exports.signup = (req, res, next) => {
@@ -18,8 +18,10 @@ exports.signup = (req, res, next) => {
   };
 //pour connecter utilisateurs existant a l application
 exports.login = (req, res, next) => {
+  console.log(req.body);
     User.findOne({ email: req.body.email })//pour trouver un utilisateur
       .then(user => {
+        console.log(user);
         if (!user) {
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });//si utilisateur n a pas ete trouve
         }

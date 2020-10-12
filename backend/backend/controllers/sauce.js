@@ -16,7 +16,7 @@ exports.createSauce = (req, res, next) => {
     .then(() => res.status(201).json({ message: 'Sauce enregistré !'}))
     .catch(error => res.status(400).json({ error }));
 
-    sauceObject.likes = 0;                      // à sauce on ajoute like à 0
+    sauceObject.likes = 0;                      // à sauce on ajoute like
     sauceObject.dislikes = 0;                   // à sauce on ajoute dislike
     sauceObject.usersLiked = [];                // déclaration tableau des utilisateurs qui aiment
     sauceObject.usersDisliked = [];             //declaration tableau des utilisateurs qui n aiment pas
@@ -66,11 +66,11 @@ exports.getOneSauce = (req, res, next) => {
 //gestion du like/dislike
 exports.sauceLikeDislike = (req, res, next) => {
   if (req.body.like === 1) {                            // si aime la sauce
-  Sauce.updateOne({ _id: req.params.id }, { $inc: { likes: req.body.like++ }, $push: { usersLiked: req.body.userId } }) // 1 like et on le pousse dans le tableau usersLiked
+  Sauce.updateOne({ _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId } }) // 1 like et on le pousse dans le tableau usersLiked
       .then((sauce) => res.status(200).json({ message: 'like en plus !' }))
       .catch(error => res.status(400).json({ error }));
 } else if (req.body.like === -1) {                      // si aime pas la sauce
-  Sauce.updateOne({ _id: req.params.id }, { $inc: { dislikes: (req.body.like++) * -1 }, $push: { usersDisliked: req.body.userId } }) //  1 dislike et on le pousse dans le tableau usersDisliked
+  Sauce.updateOne({ _id: req.params.id }, { $inc: { dislikes: 1 }, $push: { usersDisliked: req.body.userId } }) //  1 dislike et on le pousse dans le tableau usersDisliked
       .then((sauce) => res.status(200).json({ message: 'dislike en plus !' }))
       .catch(error => res.status(400).json({ error }));
 } else {                                                // si l'utilisateur enleve son vote, like === 0
