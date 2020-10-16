@@ -18,7 +18,7 @@ const normalizePort = val => {
 };
 
 //sur quel port l'application va tourner
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');//port 3000 ou defini par lenvironnement
 app.set('port', port);
 
 //fonction pour la gestion des erreurs
@@ -42,7 +42,7 @@ const errorHandler = error => {
   }
 };
 
-//appels au serveur
+//creation serveur
 const server = http.createServer(app);
 
 //gestions des évènements du serveur
@@ -53,5 +53,5 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-server.listen(port);
+server.listen(port);//port 3000
 

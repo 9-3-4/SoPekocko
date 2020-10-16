@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');//hashage-cryptage des mots de passe
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const User = require("../models/user");
 
 //enregistrement utilisateurs
 exports.signup = (req, res, next) => {
@@ -20,6 +20,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })//pour trouver un utilisateur
       .then(user => {
+        console.log(user);
         if (!user) {
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });//si utilisateur n a pas ete trouve
         }
