@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');            // jwt pour configurer systeme de jeton de secutrité
+const jwt = require('jsonwebtoken');            // jwt pour configurer systeme de jeton de securité
 
 module.exports = (req, res, next) => {
   try {                                         // verification du jeton (token) avec celui de l utilisateur

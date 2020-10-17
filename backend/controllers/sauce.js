@@ -92,14 +92,4 @@ exports.sauceLikeDislike = (req, res, next) => {
 
 
 
-/*
 
-if like === 1 //utilisateur aime une seule fois
-
-
-else === 0 //utilisateur annule sont like ou dislike
-
-else === -1 //utilisateur n'aime pas une seule fois
-
-ajout ou suppression userID dans les tableaux correspondant
-*/

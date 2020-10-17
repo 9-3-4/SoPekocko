@@ -7,8 +7,8 @@ const helmet = require('helmet');                             //pour la sécurit
 
 //sécurité dotenv
 require("dotenv").config();
-const ID = process.env.ID;
-const MDP = process.env.MDP;
+ID = process.env.ID;
+MDP = process.env.MDP;
 
 //creation fonction express
 const app = express();
@@ -26,10 +26,9 @@ mongoose.connect('mongodb+srv://user_1:Sopeko1@cluster0.pp0he.mongodb.net/SoPek?
 
 //pour eviter les erreurs de CORS, header, pour permettre les acces de l application a l API
 app.use((req, res, next) => {
-  //console.log(req);
-    res.setHeader('Access-Control-Allow-Origin', '*');                                          //tout le monde a le droit d acces a notre API
+    res.setHeader('Access-Control-Allow-Origin', '*');                                                                          //tout le monde a le droit d acces a notre API
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');    // autorisation d utiliser certaines entete
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');    //et sur certaines methodes
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');                                    //et sur certaines methodes
     next();
   });
 
