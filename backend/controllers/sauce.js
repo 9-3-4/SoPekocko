@@ -15,12 +15,6 @@ exports.createSauce = (req, res, next) => {
     sauce.save()
     .then(() => res.status(201).json({ message: 'Sauce enregistré !'}))
     .catch(error => res.status(400).json({ error }));
-
-    sauceObject.likes = 0;                      // à sauce on ajoute like
-    sauceObject.dislikes = 0;                   // à sauce on ajoute dislike
-    sauceObject.usersLiked = [];                // déclaration tableau des utilisateurs qui aiment
-    sauceObject.usersDisliked = [];             //declaration tableau des utilisateurs qui n aiment pas
-
    };
 
   //modification sauce PUT

@@ -7,8 +7,7 @@ const helmet = require('helmet');                             //pour la sécurit
 
 //sécurité dotenv
 require("dotenv").config();
-ID = process.env.ID;
-MDP = process.env.MDP;
+
 
 //creation fonction express
 const app = express();
@@ -18,7 +17,7 @@ const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
 //connection API à la base de donnée MongoDB
-mongoose.connect('mongodb+srv://user_1:Sopeko1@cluster0.pp0he.mongodb.net/SoPek?retryWrites=true&w=majority',
+mongoose.connect(process.env.CONNEXION_MONGO,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
