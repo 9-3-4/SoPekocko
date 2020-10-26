@@ -4,6 +4,7 @@ const Sauce = require('../models/sauce');
 // Ajout du package File System pour acceder aux fonction qui permet la suppression des sauces
 const fs = require ('fs');
 
+//CRUD
 //creation sauce POST
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce); 
@@ -43,14 +44,14 @@ exports.createSauce = (req, res, next) => {
     .catch(error => res.status(500).json({error}));
   };
   
-  //recuperation toute Sauce (GET)
+  //recuperation toute Sauce GET
 exports.getAllSauces = (req, res, next) => {
   Sauce.find()
     .then((sauces) => res.status(200).json(sauces))
     .catch((error) => res.status(400).json({ error }));
 };
 
-// recuperation une Sauce (GET)
+// recuperation une Sauce GET
 exports.getOneSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then((sauce) => res.status(200).json(sauce))
@@ -72,7 +73,7 @@ exports.sauceLikeDislike = (req, res, next) => {
       .then(sauce => {
           if (sauce.usersLiked.includes(req.body.userId)) { // si l'array userLiked contient le id de like
               Sauce.updateOne({ _id: req.params.id }, { $pull: { usersLiked: req.body.userId }, $inc: { likes: -1 } }) // $pull :  vide le tableau userLiked et enleve un like pour les like en double
-                  .then((sauce) => { res.status(200).json({ message: 'like en moin !' }) })
+                  .then((sauce) => { res.status(200).json({ message: 'like en moins !' }) })
                   .catch(error => res.status(400).json({ error }))
           } else if (sauce.usersDisliked.includes(req.body.userId)) {
               Sauce.updateOne({ _id: req.params.id }, { $pull: { usersDisliked: req.body.userId }, $inc: { dislikes: -1 } })
@@ -83,7 +84,3 @@ exports.sauceLikeDislike = (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
 }
 };
-
-
-
-
