@@ -9,11 +9,12 @@ var schema = new passwordValidator();                     // Creer le schema de 
 
 schema                                                    // propriétés du schema pour le mot de passe  
 .is().min(8)                                              // Longueur minimale 8                              
-.is().max(20)                                             // Longueur maximale 200                             
+.is().max(20)                                             // Longueur maximale 20                            
 .has().uppercase()                                        // Doit avoir des lettres majuscules                         
-.has().lowercase()                                        //  Doit avoir des lettres minuscules                         
-.has().digits(1)                                          //  Doit avoir au moins 1 chiffres                           
-.has().not().spaces()                                     //  Ne doit pas avoir d'espaces                                                                          
+.has().lowercase()                                        // Doit avoir des lettres minuscules                         
+.has().digits(1)                                          // Doit avoir au moins 1 chiffre                           
+.has().not().spaces()                                     // Ne doit pas avoir d'espaces                                                                          
+.is().not().oneOf(['Passw0rd', 'Password123']);           // Mot de passe interdit
 
 //enregistrement compte utilisateurs avec verification email et mot de passe
 exports.signup = (req, res, next) => {
