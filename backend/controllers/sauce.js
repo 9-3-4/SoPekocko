@@ -76,7 +76,7 @@ exports.sauceLikeDislike = (req, res, next) => {
                   .then((sauce) => { res.status(200).json({ message: 'like en moins !' }) })
                   .catch(error => res.status(400).json({ error }))
           } else if (sauce.usersDisliked.includes(req.body.userId)) {
-              Sauce.updateOne({ _id: req.params.id }, { $pull: { usersDisliked: req.body.userId }, $inc: { dislikes: -1 } })
+              Sauce.updateOne({ _id: req.params.id }, { $pull: { usersDisliked: req.body.userId }, $inc: { dislikes: 1 } })
                   .then((sauce) => { res.status(200).json({ message: 'dislike en moins !' }) })
                   .catch(error => res.status(400).json({ error }))
           }

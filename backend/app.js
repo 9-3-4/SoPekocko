@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   app.use('/images', express.static(path.join(__dirname, 'images')));
   
   // Routes attendues pour les differentes API
-  app.use('/api/sauce', sauceRoutes);
+  app.use('/api/sauces', sauceRoutes);
   app.use('/api/auth', userRoutes);
 
   //configuration helmet
